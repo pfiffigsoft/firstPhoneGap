@@ -72,6 +72,21 @@
                 Вашият browser не подържа този audio формат.
             </audio>
         </p>
+        <script type="text/javascript">
+            function toggleSound(id_of_elem) {
+                var audioElem = document.getElementById(id_of_elem);
+                if (audioElem.paused)
+                    audioElem.play();
+                else
+                    audioElem.pause();
+            }
+            $('#podai_vinoto_img').on('click', function () {
+                toggleSound("podaivinototam");
+            });
+            $('#piqn_chovek_img').on('click', function () {
+                toggleSound("piqnhovek");
+            });
+        </script>
 
     
             </div>
