@@ -49,21 +49,7 @@
   ga('send', 'pageview');
 </script>
 <div class="container">
-    <div class="header clearfix">
-        <nav>
-            <ul class="nav nav-pills pull-right">
-                <li role="presentation" class="active"><a href="/">Начало</a></li>
-                <li role="presentation"><a href="/teniski/">Тениски</a></li>
-            </ul>
-        </nav>
-        <img src="images/logo.png" width="25%" height="25%">
-    </div>
-
     <div class="jumbotron">
-        <p>
-            <img src="images/piinqcite.jpg" width="75%" height="75%">
-        </p>
-
         <p>
 
         <h2>Ако си жаден, натисни бутон</h2>
@@ -87,96 +73,8 @@
             </audio>
         </p>
 
-        <p>
-            <a href="http://www.podaivinototam.com/teniski/" class="btn btn-primary btn-lg" id="podai_teniska">Подай тениската там</a>
-        </p>
-
-        <p>Намери ни във <a href="https://www.facebook.com/podaivinoto/" target='_blank'>facebook</a></p>
-        <script type="text/javascript">
-            function toggleSound(id_of_elem) {
-                var audioElem = document.getElementById(id_of_elem);
-                if (audioElem.paused)
-                    audioElem.play();
-                else
-                    audioElem.pause();
-            }
-            $('#podai_vinoto_img').on('click', function () {
-                toggleSound("podaivinototam");
-            });
-            $('#piqn_chovek_img').on('click', function () {
-                toggleSound("piqnhovek");
-            });
-        </script>
-
-    </div>
-
-    <footer class="footer">
-        <div class="pull-left"><a href="http://www.pfiffigsoft.com">&copy; 2016 Фифигсофт, ЕООД.</a></div>
-
-        <div class="pull-right">
-            <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=566811716664681";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-            <div class="fb-like" data-href="https://www.facebook.com/podaivinoto/" data-layout="button_count"
-                 data-action="like" data-show-faces="true" data-share="false"></div>
-            <div class="fb-share-button" data-href="http://www.podaivinototam.com" data-layout="button_count"></div>
-        </div>
-    </footer>
-
-</div> <!-- /container -->
-
-<div class="modal fade" id="teniska-modal" tabindex="-2" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="background: #eeeeee !important; width: 1000px;">
-            <div class="modal-header">
-                <p>
-
-                <h3>Заяви тениска и ще се свържем с теб,
-                    за да ти я подадем. Можеш да разгледаш тениските в нашата <a href="https://www.facebook.com/podaivinoto" target="_blank">Facebook страница</a></h3>
-                </p>
-            </div>
-            <div class="modal-body" id="teniska_modal_body">
-                <div class="row" id="form_teniska">
-                    <p>
-
-                    <form>
-                        {% csrf_token %}
-                        <input class="form-control" type="email" placeholder="your_email@domain.com" id="teniska_email">
-                    </form>
-                    </p>
-
-                    <!-- /.container -->
-                </div>
-            </div>
-            <div class="modal-footer">
-                <a href="#" class="btn btn-success pull-left" id="zaqvi_teniska">Заяви</a>
-                <script>
-                    $("#zaqvi_teniska").on('click', function () {
-                        console.log("CLICK");
-                        var email = $("#teniska_email").val()
-                        $.post('/api/rest/contact/', {'email': email}).done(function (data) {
-                            $("#teniska_modal_body").html('<div class="alert alert-success" role="alert">Благодаря за заявката. На посоченият от Вас email ще намерите детайли.</div>');
-			    $('#zaqvi_teniska').hide();
-                        }).fail(function () {
-                            $("#form_teniska").prepend('<div class="alert alert-danger" role="alert">Опитай отново.</div>');
-                        });
-                    });
-                </script>
-                <a href="#" class="btn btn-warning pull-right" id="close_modal">Затвори</a>
-                <script>
-                    $("#close_modal").on('click', function () {
-                        location.reload();
-                    });
-                </script>
+    
             </div>
         </div>
-    </div>
-</div>
-
 </body>
 </html>
